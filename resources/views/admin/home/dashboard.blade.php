@@ -55,11 +55,3 @@
     © T-SHOP
 </div>
 @endsection
-
-@section('footer_js')
-    <script>
-        layui.use('element', function(){
-            var element = layui.element;
-        });
-    </script>
-@endsection

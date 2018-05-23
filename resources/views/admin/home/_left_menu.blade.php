@@ -1,4 +1,4 @@
-<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+<ul class="layui-nav layui-nav-tree"  lay-filter="left-menu">
     <li class="layui-nav-item">
         <a class="" href="javascript:;">所有商品</a>
         <dl class="layui-nav-child">
@@ -12,7 +12,7 @@
         <a href="javascript:;">解决方案</a>
         <dl class="layui-nav-child">
             <dd id="S002" name="https://namet.xyz"><a href="javascript:void(0);">列表一</a></dd>
-            <dd><a href="https://namet.xyz">列表二</a></dd>
+            <dd id="S003" name="https://namet.xyz"><a href="javascript:;">列表二</a></dd>
             <dd><a href="https://namet.xyz">超链接</a></dd>
         </dl>
     </li>

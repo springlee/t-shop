@@ -12,8 +12,8 @@
 <div class="layui-layout layui-layout-admin">
     @yield('content')
 </div>
-<scrip src="{{ mix('js/app.js')  }}"></scrip>
 <script src="{{ asset('plugins/layui/layui.js') }}"></script>
+<script src="{{ mix('js/admin.js')  }}"></script>
 @yield('footer_js', '')
 </body>
 </html>
