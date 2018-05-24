@@ -6,7 +6,7 @@
     <title>@yield('title','Admin') - TShop</title>
     <link rel="stylesheet" href="{{ asset('plugins/layui/css/layui.css') }}">
     <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
-    @yield('css', '')
+    @yield('header', '')
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -14,6 +14,6 @@
 </div>
 <script src="{{ asset('plugins/layui/layui.all.js') }}"></script>
 <script src="{{ mix('js/admin.js')  }}"></script>
-@yield('footer_js', '')
+@yield('footer', '')
 </body>
 </html>

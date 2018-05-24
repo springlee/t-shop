@@ -1,4 +1,4 @@
-<ul class="layui-nav layui-nav-tree"  lay-filter="left-menu">
+<ul class="layui-nav layui-nav-tree layout-menus"  lay-filter="left-menu">
     <li class="layui-nav-item">
         <a class="" href="javascript:;">所有商品</a>
         <dl class="layui-nav-child">
