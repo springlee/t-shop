@@ -1,0 +1,121 @@
+body {
+  background-color: #f2f2f2;
+}
+
+body .layui-nav .layui-nav-item a {
+  text-underline: none;
+}
+
+body .layui-nav-tree .layui-nav-child a:hover {
+  background: 0 0;
+  color: #fff;
+}
+
+body .layui-tab-title li:first-child > i {
+  display: none;
+}
+
+body .layui-tab-title .layui-this:after {
+  border: none;
+}
+
+body .layui-tab-title .layui-this {
+  background-color: #1AA094;
+  color: #fff;
+}
+
+body .layui-tab {
+  margin-top: 0;
+}
+
+body .layui-body {
+  border-top: 5px solid #1AA094;
+}
+
+body .layui-footer {
+  text-align: center;
+  height: 30px !important;
+  line-height: 30px !important;
+}
+
+body .layui-layout-body {
+  overflow: auto;
+}
+
+.user-login {
+  position: relative;
+  left: 0;
+  top: 0;
+  padding: 110px 0;
+  min-height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.user-login .user-login-main {
+  width: 375px;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.user-login .user-login-main .user-login-box {
+  padding: 20px;
+}
+
+.user-login .user-login-main .user-login-header {
+  text-align: center;
+}
+
+.user-login .user-login-main .user-login-header h2 {
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-size: 30px;
+  color: #000;
+}
+
+.user-login .user-login-main .user-login-body .layui-form-item {
+  position: relative;
+}
+
+.user-login .user-login-main .user-login-body .layui-form-item .layui-input {
+  padding-left: 38px;
+}
+
+.user-login .user-login-main .user-login-body .user-login-icon {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 38px;
+  line-height: 36px;
+  text-align: center;
+  color: #d2d2d2;
+}
+
+.user-login .user-login-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 30px;
+  padding: 20px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: grey;
+}
+
+@media screen and (max-width: 768px) {
+  .user-login {
+    padding-top: 60px;
+  }
+
+  .user-login-main {
+    width: 300px;
+  }
+
+  .user-login-box {
+    padding: 10px;
+  }
+}
+

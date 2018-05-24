@@ -5,13 +5,13 @@
 <div class="layui-header">
     <div class="layui-logo">T-SHOP</div>
     @include('admin.home._header_menu')
-    <ul class="layui-nav layui-layout-right">
+    <ul class="layui-nav layui-layout-right top_menu">
         <li class="layui-nav-item">
             <a href="javascript:;">
                 <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                 贤心
             </a>
-            <dl class="layui-nav-child">
+            <dl class="layui-nav-child" >
                 <dd><a href="">基本资料</a></dd>
                 <dd><a href="">安全设置</a></dd>
             </dl>
@@ -29,13 +29,13 @@
 <div class="layui-body">
     <div class="layui-tab" lay-allowClose="true" lay-filter="tab-switch">
         <ul class="layui-tab-title">
-            <li class="layui-this" >后台首页</li>
+            <li class="layui-this" >首页</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
 
                 <blockquote class="layui-elem-quote layui-text">
-                    服务器环境
+                    这是首页 还没有做内容
                 </blockquote>
 
                 @foreach($envs as $env)
