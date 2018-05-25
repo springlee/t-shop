@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminRolesTable extends Migration
+class CreateAdminPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAdminRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_roles', function (Blueprint $table) {
+        Schema::create('admin_permissions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 50)->unique()->comment('角色名');
-            $table->string('permission_ids')->comment('权限ids');
-            $table->tinyInteger('is_valid')->default(1)->comment('是否有效');
+            $table->string('name', 50)->unique()->comment('权限名');
+            $table->string('method', 50)->default('')->comment('请求方式.多个以,隔开');
+            $table->string('uri', 100)->default('')->comment('访问地址');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreateAdminRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_roles');
+        Schema::dropIfExists('admin_permissions');
     }
 }

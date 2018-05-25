@@ -42,6 +42,10 @@ body .layui-layout-body {
   overflow: auto;
 }
 
+body .layui-footer {
+  position: absolute !important;
+}
+
 .user-login {
   position: relative;
   left: 0;

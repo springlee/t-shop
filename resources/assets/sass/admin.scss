@@ -37,6 +37,9 @@ body {
     .layui-layout-body {
       overflow: auto;
     }
+  .layui-footer {
+    position: absolute !important;
+  }
 }
 //用户登陆
 .user-login {
