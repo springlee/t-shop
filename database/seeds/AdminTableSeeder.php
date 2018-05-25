@@ -78,7 +78,6 @@ class AdminTableSeeder extends Seeder
             ],
         ];
 
-        $parent_id = 0;
         foreach ($menus as $menu) {
             $m = array_only($menu, ['name', 'icon', 'uri']);
             $m['parent_id'] = $parent_id;
