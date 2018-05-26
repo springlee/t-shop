@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Traits\AuthTraits;
+use App\Traits\AuthTrait;
 
 class AuthController extends Controller
 {
-    use AuthenticatesUsers, AuthTraits {
-        AuthTraits::logout insteadof AuthenticatesUsers;
+    use AuthenticatesUsers, AuthTrait {
+        AuthTrait::logout insteadof AuthenticatesUsers;
     }
 
     public function __construct()

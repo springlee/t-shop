@@ -31,7 +31,7 @@ class AdminTableSeeder extends Seeder
             'email' => str_random(10) . '@example.com',
             'password' => bcrypt('admin'),
             'remember_token' => str_random(10),
-            'role_ids' => ",{$role_id},",
+            'role_ids' => "{$role_id},2",
             'is_super' => 1,
             'tel' => mt_rand(134, 181) . mt_rand(10000000, 99999999),
             'created_at' => date('Y-m-d H:i:s'),
@@ -47,32 +47,38 @@ class AdminTableSeeder extends Seeder
                 'name' => '系统设置',
                 'icon' => '',
                 'uri' => '',
+                'order' => 0,
 
                 'children' => [
                     [
                         'name' => '菜单管理',
                         'icon' => '',
                         'uri' => 'system/menus',
+                        'order' => 0,
                     ],
                     [
                         'name' => '管理员管理',
                         'icon' => '',
                         'uri' => 'system/users',
+                        'order' => 1,
                     ],
                     [
                         'name' => '角色管理',
                         'icon' => '',
                         'uri' => 'system/roles',
+                        'order' => 2,
                     ],
                     [
                         'name' => '权限管理',
                         'icon' => '',
                         'uri' => 'system/permissions',
+                        'order' => 3,
                     ],
                     [
                         'name' => '操作日志',
                         'icon' => '',
                         'uri' => 'system/logs',
+                        'order' => 0,
                     ],
                 ]
             ],
@@ -80,7 +86,7 @@ class AdminTableSeeder extends Seeder
 
         foreach ($menus as $menu) {
             $m = array_only($menu, ['name', 'icon', 'uri']);
-            $m['parent_id'] = $parent_id;
+            $m['parent_id'] = 0;
             $m = array_merge($m, ['created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'),]);
             $parent_id = DB::table('admin_menus')->insertGetId($m);
             foreach ($menu['children'] ?? [] as $child) {

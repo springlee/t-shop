@@ -1,6 +1,19 @@
 <ul class="layui-nav layui-nav-tree layout-menus"  lay-filter="left-menu">
+    @foreach ($menus['left'] as $menu)
     <li class="layui-nav-item">
-        <a class="" href="javascript:;">所有商品</a>
+        @if ($menu['child'])
+        <dl class="layui-nav-child">
+            @foreach ($menu['child'] as $child)
+
+            @endforeach
+        </dl>
+        @else
+        <a href="javascript:;" data-url="{{ $menu['url'] }}">所有商品</a>
+        @endif
+    </li>
+    @endforeach
+    <li class="layui-nav-item">
+
         <dl class="layui-nav-child">
             <dd><a href="javascript:;">列表一</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>

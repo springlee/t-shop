@@ -8,7 +8,7 @@
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
             <a href="javascript:;">
-                <img src="https://namet-blog.oss-cn-shenzhen.aliyuncs.com/users/2/avatar.jpg" class="layui-nav-img">
+                <img src="{{ auth('admin')->user()->avatar }}" class="layui-nav-img">
                 {{ auth('admin')->user()->username }}
             </a>
             <dl class="layui-nav-child" >

@@ -22,6 +22,7 @@ class CreateAdminMenusTable extends Migration
             $table->string('uri', 100)->nullable()->comment('URI, 对应route');
             $table->enum('position', ['left', 'header'])->default('left')->comment('菜单位置');
             $table->tinyInteger('is_valid')->default(1)->comment('是否有效');
+            $table->smallInteger('order')->default(0)->comment('排序');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\AuthTrait;
 
 class HomeController extends Controller
 {
+    use AuthTrait;
+
     public function index()
     {
-        return view('admin.home.index');
+        $menus = $this->getMenus();
+        return view('admin.home.index', compact('menus'));
     }
 
     public function dashboard()
