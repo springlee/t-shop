@@ -18,7 +18,7 @@ class CreateAdminLogsTable extends Migration
             $table->increments('id');
             $table->integer('admin_id')->comment('管理员id');
             $table->text('log_info')->nullable()->comment('日志内容');
-            $table->string('action', 50)->nullable()->comment('控制器-方法');
+            $table->string('route')->nullable()->comment('路由');
             $table->enum('method', ['GET', 'POST', 'DELETE', 'OPTIONS', 'PATCH', 'PUT', 'HEAD'])->comment('请求方式');
             $table->ipAddress('ip')->nullable()->comment('IP地址');
             $table->timestamps();

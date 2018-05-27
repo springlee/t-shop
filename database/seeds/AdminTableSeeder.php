@@ -46,51 +46,76 @@ class AdminTableSeeder extends Seeder
                 'parent_id' => 0,
                 'name' => '系统设置',
                 'icon' => '',
-                'uri' => '',
+                'route' => '',
                 'order' => 0,
+                'position' => 'left',
 
                 'children' => [
                     [
                         'name' => '菜单管理',
                         'icon' => '',
-                        'uri' => 'system/menus',
+                        'route' => 'admin_menus',
                         'order' => 0,
                     ],
                     [
                         'name' => '管理员管理',
                         'icon' => '',
-                        'uri' => 'system/users',
+                        'route' => 'admin_users',
                         'order' => 1,
                     ],
                     [
                         'name' => '角色管理',
                         'icon' => '',
-                        'uri' => 'system/roles',
+                        'route' => 'admin_roles',
                         'order' => 2,
                     ],
                     [
                         'name' => '权限管理',
                         'icon' => '',
-                        'uri' => 'system/permissions',
+                        'route' => 'admin_permissions',
                         'order' => 3,
                     ],
                     [
                         'name' => '操作日志',
                         'icon' => '',
-                        'uri' => 'system/logs',
+                        'route' => 'admin_logs',
                         'order' => 0,
+                    ],
+                ]
+            ],
+            [
+                'parent_id' => 0,
+                'name' => '用户管理',
+                'icon' => '',
+                'route' => '',
+                'order' => 1,
+
+                'children' => [
+                    [
+                        'name' => '用户列表',
+                        'icon' => '',
+                        'route' => 'users',
+                        'order' => 2,
+                    ],
+                    [
+                        'name' => '用户操作日志',
+                        'icon' => '',
+                        'route' => 'user_logs',
+                        'order' => 1,
                     ],
                 ]
             ],
         ];
 
         foreach ($menus as $menu) {
-            $m = array_only($menu, ['name', 'icon', 'uri']);
+            $m = array_only($menu, ['name', 'icon', 'route']);
             $m['parent_id'] = 0;
             $m = array_merge($m, ['created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'),]);
             $parent_id = DB::table('admin_menus')->insertGetId($m);
+            $position = $menu['position'];
             foreach ($menu['children'] ?? [] as $child) {
                 $child['parent_id'] = $parent_id;
+                $child['position'] = $position;
                 $child = array_merge(
                     $child,
                     ['created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'),]

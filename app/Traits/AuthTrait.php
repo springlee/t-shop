@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 trait AuthTrait
 {
+    /**
+     * 退出登陆
+     */
     public function logout(Request $request)
     {
         $this->guard()->logout();
@@ -15,20 +18,26 @@ trait AuthTrait
         return redirect()->route(strpos($this->guard()->getName(), 'admin') ? 'admin.login' : 'login');
     }
 
-
-    public function getMenus()
+    /**
+     * 根据用户权限获取用户菜单
+     */
+    public function getUserMenus()
     {
-        $menus = AdminMenu::orderBy('order', 'desc')->get()->toArray();
+        $menus = AdminMenu::where(['is_valid' => 1])->orderBy('order', 'desc')->get()->toArray();
         $data = [];
         foreach ($menus as $menu) {
+            $menu['route'] = "{$menu['route']}.index";
             if ($menu['parent_id']) {
                 $data[$menu['position']][$menu['parent_id']]['children'][] = $menu;
             } else {
-                $data[$menu['position']][$menu['id']] = $menu;
+                if (isset($data[$menu['position']][$menu['id']])) {
+                    $data[$menu['position']][$menu['id']] = array_merge($menu, $data[$menu['position']][$menu['id']]);
+                } else {
+                    $data[$menu['position']][$menu['id']] = $menu;
+                }
             }
         }
 
-        dd($menus, $data);exit;
-//        $role_ids = auth('admin')->user()->role_ids;
+        return $data;
     }
 }

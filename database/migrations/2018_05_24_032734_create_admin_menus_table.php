@@ -19,7 +19,7 @@ class CreateAdminMenusTable extends Migration
             $table->integer('parent_id')->comment('父级id');
             $table->string('name', 20)->unique()->comment('菜单名');
             $table->string('icon', 30)->nullable()->comment('图标');
-            $table->string('uri', 100)->nullable()->comment('URI, 对应route');
+            $table->string('route', 100)->nullable()->comment('对应route');
             $table->enum('position', ['left', 'header'])->default('left')->comment('菜单位置');
             $table->tinyInteger('is_valid')->default(1)->comment('是否有效');
             $table->smallInteger('order')->default(0)->comment('排序');

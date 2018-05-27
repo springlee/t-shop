@@ -12,7 +12,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $menus = $this->getMenus();
+        $menus = $this->getUserMenus();
+
         return view('admin.home.index', compact('menus'));
     }
 
@@ -22,6 +23,7 @@ class HomeController extends Controller
             ['name' => 'php_version', 'value' => PHP_VERSION],
             ['name' => 'method', 'value' => 'post'],
         ];
+
         return view('admin.home.dashboard', compact('envs'));
     }
 }
