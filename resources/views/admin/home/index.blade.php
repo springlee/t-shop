@@ -7,6 +7,9 @@
     {{--@include('admin.home._header_menu')--}}
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
+            <a href="javascript:;" id="reload-iframe">刷新</a>
+        </li>
+        <li class="layui-nav-item">
             <a href="javascript:;">
                 <img src="{{ auth('admin')->user()->avatar }}" class="layui-nav-img">
                 {{ auth('admin')->user()->username }}
@@ -39,7 +42,7 @@
     </div>
 </div>
 
-<div class="layui-footer">
+{{-- <div class="layui-footer">
     © T-SHOP
-</div>
+</div> --}}
 @endsection

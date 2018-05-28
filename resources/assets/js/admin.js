@@ -22,3 +22,9 @@ function addTab(tabTitle,tabUrl,tabId){
         element.tabChange('tab-switch', tabId);
     }
 }
+
+$('#reload-iframe').click(function(e) {
+    e.preventDefault();
+    var iframe = $('.layui-tab .layui-show iframe').eq(0);
+    iframe.attr('src', iframe.attr('src'));
+});
