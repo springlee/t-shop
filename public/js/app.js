@@ -31856,13 +31856,6 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/assets/sass/admin.scss":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/assets/sass/app.scss":
 /***/ (function(module, exports) {
 
@@ -31875,7 +31868,7 @@ if (token) {
 
 __webpack_require__("./resources/assets/js/app.js");
 __webpack_require__("./resources/assets/sass/app.scss");
-module.exports = __webpack_require__("./resources/assets/sass/admin.scss");
+(function webpackMissingModule() { throw new Error("Cannot find module \"/Code/php/my/t-shop/resources/assets/sass/admin.scss\""); }());
 
 
 /***/ })
