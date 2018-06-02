@@ -12,4 +12,12 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->resource('user/users', 'UserController');
+    $router->resource('user/logs', 'UserLogController');
+
+    $router->resource('goods/goods', 'GoodsController');
+    $router->resource('goods/categories', 'CategoryController');
+    $router->resource('goods/attributes', 'GoodsAttrController');
+
+    $router->resource('order/orders', 'OrderController');
+    $router->resource('order/logs', 'OrderLogController');
 });
