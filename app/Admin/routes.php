@@ -15,7 +15,7 @@ Route::group([
     $router->resource('user/logs', 'UserLogController');
 
     $router->resource('goods/goods', 'GoodsController');
-    $router->resource('goods/categories', 'CategoryController');
+    $router->resource('goods/categories', 'GoodsCatController');
     $router->resource('goods/attributes', 'GoodsAttrController');
 
     $router->resource('order/orders', 'OrderController');

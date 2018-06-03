@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Model\User;
+use App\Model\Order;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class UserController extends Controller
+class OrderController extends Controller
 {
     use ModelForm;
 
@@ -24,13 +24,8 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('用户列表');
-            $content->description('');
-
-            $content->breadcrumb(
-                ['text' => '用户管理', 'url' => '/user/users'],
-                ['text' => '用户列表']
-            );
+            $content->header('header');
+            $content->description('description');
 
             $content->body($this->grid());
         });
@@ -46,8 +41,8 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('编辑用户');
-            $content->description('');
+            $content->header('header');
+            $content->description('description');
 
             $content->body($this->form()->edit($id));
         });
@@ -62,8 +57,8 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('新增用户');
-            $content->description('');
+            $content->header('header');
+            $content->description('description');
 
             $content->body($this->form());
         });
@@ -76,18 +71,12 @@ class UserController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(User::class, function (Grid $grid) {
+        return Admin::grid(Order::class, function (Grid $grid) {
 
-            $grid->id('编号')->sortable();
-            $grid->username('用户名');
-            $grid->email('邮箱');
-            $grid->tel('手机号');
-            $grid->created_at('创建时间')->sortable();
-            $grid->updated_at('最后更新时间')->sortable();
-            $grid->last_login('最后登陆时间')->sortable();
+            $grid->id('ID')->sortable();
 
-            $grid->model()->orderBy('id', 'desc');
-            // $grid->model()->
+            $grid->created_at();
+            $grid->updated_at();
         });
     }
 
@@ -98,14 +87,12 @@ class UserController extends Controller
      */
     protected function form()
     {
-        return Admin::form(User::class, function (Form $form) {
+        return Admin::form(Order::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
-            // $form->
-
-            $form->display('created_at', '创建时间');
-            $form->display('updated_at', '最后更新时间');
+            $form->display('created_at', 'Created At');
+            $form->display('updated_at', 'Updated At');
         });
     }
 }
