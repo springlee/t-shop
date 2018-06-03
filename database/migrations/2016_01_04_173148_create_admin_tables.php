@@ -80,6 +80,7 @@ class CreateAdminTables extends Migration
         });
 
         Schema::connection($connection)->create(config('admin.database.operation_log_table'), function (Blueprint $table) {
+            $table->engine='MyISAM';
             $table->increments('id');
             $table->integer('user_id');
             $table->string('path');
