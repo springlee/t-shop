@@ -15,6 +15,12 @@ class CreateOrderGoodsTable extends Migration
     {
         Schema::create('order_goods', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id')->comment('订单id');
+            $table->integer('product_id')->comment('货品id');
+            $table->string('sku', 30)->comment('SKU');
+            $table->decimal('price', 10, 2)->comment('单价');
+            $table->smallInteger('num')->default(0)->comment('数量');
+            $table->smallInteger('send_num')->default(0)->comment('已发货数量');
             $table->timestamps();
         });
     }

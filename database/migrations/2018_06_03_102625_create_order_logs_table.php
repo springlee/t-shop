@@ -14,7 +14,12 @@ class CreateOrderLogsTable extends Migration
     public function up()
     {
         Schema::create('order_logs', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('order_id')->comment('订单id');
+            $table->char('action', 20)->comment('操作');
+            $table->string('user', 50)->comment('操作人');
+            $table->string('content', 100)->comment('内容');
             $table->timestamps();
         });
     }
