@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->comment('用户ID');
             $table->tinyInteger('pay_status')->default(0)->comment('支付状态');
             $table->tinyInteger('order_status')->default(0)->comment('订单状态');
-            $table->tintInteger('ship_status')->default(0)->comment('发货状态');
+            $table->tinyInteger('ship_status')->default(0)->comment('发货状态');
 
             $table->tinyInteger('pay_id')->default(0)->comment('支付方式');
             $table->string('pay_no')->nullable()->commnet('支付流水号');
