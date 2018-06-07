@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		0: 0
+/******/ 		1: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + "77cf2ada3075a181f40c" + ".chunk.js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + "d84123f6d206cc3ef550" + ".chunk.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -3201,6 +3201,35 @@ function mergeFn (a, b) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}],[\"env\"]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/views/App.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    data: function data() {
+        return {};
+    }
+};
+
+/***/ }),
+
 /***/ "./node_modules/babel-runtime/core-js/object/assign.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4758,7 +4787,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.app-search-bg {\r\n  background: #EEE;\r\n  padding: 10px;\n}\n.app-search {\r\n  width: 213px;\n}\n.app-pagination {\r\n  margin-top: 10px;\r\n  text-align: right;\n}\n.focus-upload-img {\r\n  margin-left: 25%;\n}\n.home-el-icon {\r\n  width: 20px;\r\n  height: 20px;\n}\r\n", ""]);
+exports.push([module.i, "\n.el-header, .el-footer {\r\n    background-color: #B3C0D1;\r\n    color: #333;\r\n    text-align: center;\r\n    line-height: 60px;\n}\n.el-main {\r\n    background-color: #E9EEF3;\r\n    color: #333;\r\n    text-align: center;\r\n    line-height: 160px;\n}\nbody > .el-container {\r\n    margin-bottom: 40px;\n}\r\n", ""]);
 
 // exports
 
@@ -51469,7 +51498,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "app" } }, [_c("router-view")], 1)
+  return _c(
+    "div",
+    { attrs: { id: "app" } },
+    [
+      _c(
+        "el-container",
+        [
+          _c("el-header", [_vm._v("Header")]),
+          _vm._v(" "),
+          _c("el-main", [_c("router-view")], 1),
+          _vm._v(" "),
+          _c("el-footer", [_vm._v("Footer")])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -65453,11 +65499,13 @@ new Vue({
 "use strict";
 
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-// import store from './store'
-// progress bar
-// progress bar style
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
+var _vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
+
+var _vue2 = _interopRequireDefault(_vue);
 
 var _router = __webpack_require__("./resources/assets/js/router/router.js");
 
@@ -65471,75 +65519,28 @@ var _nprogress2 = _interopRequireDefault(_nprogress);
 
 __webpack_require__("./node_modules/nprogress/nprogress.css");
 
-var _auth = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"@/utils/auth\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _index = __webpack_require__("./resources/assets/js/utils/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // getToken from cookie
 
+
+// progress bar
 _nprogress2.default.configure({ showSpinner: false }); // NProgress Configuration
 
-// permissiom judge function
-function hasPermission(roles, permissionRoles) {
-  if (roles.indexOf('admin') >= 0) return true; // admin permission passed directly
-  if (!permissionRoles) return true;
-  return roles.some(function (role) {
-    return permissionRoles.indexOf(role) >= 0;
-  });
-}
-
-var whiteList = ['/login', '/authredirect']; // no redirect whitelist
-
+// progress bar style
 _router2.default.beforeEach(function (to, from, next) {
-  _nprogress2.default.start(); // start progress bar
-  if ((0, _auth.getToken)()) {
-    // determine if there has token
-    /* has token*/
-    if (to.path === '/login') {
-      next({ path: '/' });
-      _nprogress2.default.done(); // if current page is dashboard will not trigger	afterEach hook, so manually handle it
-    } else {
-      if (store.getters.roles.length === 0) {
-        // 判断当前用户是否已拉取完user_info信息
-        store.dispatch('GetUserInfo').then(function (res) {
-          // 拉取user_info
-          var roles = res.data.roles; // note: roles must be a array! such as: ['editor','develop']
-          store.dispatch('GenerateRoutes', { roles: roles }).then(function () {
-            // 根据roles权限生成可访问的路由表
-            _router2.default.addRoutes(store.getters.addRouters); // 动态添加可访问路由表
-            next(_extends({}, to, { replace: true })); // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
-          });
-        }).catch(function (err) {
-          store.dispatch('FedLogOut').then(function () {
-            _elementUi.Message.error(err || 'Verification failed, please login again');
-            next({ path: '/' });
-          });
-        });
-      } else {
-        // 没有动态改变权限的需求可直接next() 删除下方权限判断 ↓
-        if (hasPermission(store.getters.roles, to.meta.roles)) {
-          next(); //
-        } else {
-          next({ path: '/401', replace: true, query: { noGoBack: true } });
-        }
-        // 可删 ↑
-      }
-    }
-  } else {
-    /* has no token*/
-    if (whiteList.indexOf(to.path) !== -1) {
-      // 在免登录白名单，直接进入
-      next();
-    } else {
-      next('/login'); // 否则全部重定向到登录页
-      _nprogress2.default.done(); // if current page is login will not trigger afterEach hook, so manually handle it
-    }
-  }
+    _nprogress2.default.start(); // start progress bar
+    (0, _index.title)(to.meta.title);
+    next();
 });
 
 _router2.default.afterEach(function () {
-  _nprogress2.default.done(); // finish progress bar
+    _nprogress2.default.done(); // finish progress bar
 });
+
+exports.default = _router2.default;
 
 /***/ }),
 
@@ -65564,18 +65565,33 @@ var _vueRouter2 = _interopRequireDefault(_vueRouter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.use(_vueRouter2.default);
-
-var routes = [{
+var routers = [{
     path: '/',
-    name: '首页',
+    name: 'home_index',
+    meta: {
+        title: '首页-2'
+    },
     component: function component(resolve) {
-        return __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./resources/assets/js/views/home/Index.vue")]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        return __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./resources/assets/js/views/home/index.vue")]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    }
+}, {
+    path: '/user',
+    name: 'user_info',
+    meta: {
+        title: '用户信息'
+    },
+    component: function component(resolve) {
+        return __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__("./resources/assets/js/views/user/user-info.vue")]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }];
 
-var router = new _vueRouter2.default({ routes: routes });
-
-exports.default = router;
+exports.default = new _vueRouter2.default({
+    // mode: 'history',
+    scrollBehavior: function scrollBehavior() {
+        return { y: 0 };
+    },
+    routes: routers
+});
 
 /***/ }),
 
@@ -65651,6 +65667,313 @@ exports.default = http;
 
 /***/ }),
 
+/***/ "./resources/assets/js/utils/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.parseTime = parseTime;
+exports.formatTime = formatTime;
+exports.getQueryObject = getQueryObject;
+exports.getByteLen = getByteLen;
+exports.cleanArray = cleanArray;
+exports.param = param;
+exports.param2Obj = param2Obj;
+exports.html2Text = html2Text;
+exports.objectMerge = objectMerge;
+exports.scrollTo = scrollTo;
+exports.toggleClass = toggleClass;
+exports.getTime = getTime;
+exports.debounce = debounce;
+exports.deepClone = deepClone;
+exports.title = title;
+/**
+ * Created by jiachenpan on 16/11/18.
+ */
+
+function parseTime(time, cFormat) {
+  if (arguments.length === 0) {
+    return null;
+  }
+  var format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
+  var date = void 0;
+  if ((typeof time === 'undefined' ? 'undefined' : _typeof(time)) === 'object') {
+    date = time;
+  } else {
+    if (('' + time).length === 10) time = parseInt(time) * 1000;
+    date = new Date(time);
+  }
+  var formatObj = {
+    y: date.getFullYear(),
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes(),
+    s: date.getSeconds(),
+    a: date.getDay()
+  };
+  var time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, function (result, key) {
+    var value = formatObj[key];
+    if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1];
+    if (result.length > 0 && value < 10) {
+      value = '0' + value;
+    }
+    return value || 0;
+  });
+  return time_str;
+}
+
+function formatTime(time, option) {
+  time = +time * 1000;
+  var d = new Date(time);
+  var now = Date.now();
+
+  var diff = (now - d) / 1000;
+
+  if (diff < 30) {
+    return '刚刚';
+  } else if (diff < 3600) {
+    // less 1 hour
+    return Math.ceil(diff / 60) + '分钟前';
+  } else if (diff < 3600 * 24) {
+    return Math.ceil(diff / 3600) + '小时前';
+  } else if (diff < 3600 * 24 * 2) {
+    return '1天前';
+  }
+  if (option) {
+    return parseTime(time, option);
+  } else {
+    return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分';
+  }
+}
+
+// 格式化时间
+function getQueryObject(url) {
+  url = url == null ? window.location.href : url;
+  var search = url.substring(url.lastIndexOf('?') + 1);
+  var obj = {};
+  var reg = /([^?&=]+)=([^?&=]*)/g;
+  search.replace(reg, function (rs, $1, $2) {
+    var name = decodeURIComponent($1);
+    var val = decodeURIComponent($2);
+    val = String(val);
+    obj[name] = val;
+    return rs;
+  });
+  return obj;
+}
+
+/**
+ *get getByteLen
+ * @param {Sting} val input value
+ * @returns {number} output value
+ */
+function getByteLen(val) {
+  var len = 0;
+  for (var i = 0; i < val.length; i++) {
+    if (val[i].match(/[^\x00-\xff]/ig) != null) {
+      len += 1;
+    } else {
+      len += 0.5;
+    }
+  }
+  return Math.floor(len);
+}
+
+function cleanArray(actual) {
+  var newArray = [];
+  for (var i = 0; i < actual.length; i++) {
+    if (actual[i]) {
+      newArray.push(actual[i]);
+    }
+  }
+  return newArray;
+}
+
+function param(json) {
+  if (!json) return '';
+  return cleanArray(Object.keys(json).map(function (key) {
+    if (json[key] === undefined) return '';
+    return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
+  })).join('&');
+}
+
+function param2Obj(url) {
+  var search = url.split('?')[1];
+  if (!search) {
+    return {};
+  }
+  return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+}
+
+function html2Text(val) {
+  var div = document.createElement('div');
+  div.innerHTML = val;
+  return div.textContent || div.innerText;
+}
+
+function objectMerge(target, source) {
+  /* Merges two  objects,
+     giving the last one precedence */
+
+  if ((typeof target === 'undefined' ? 'undefined' : _typeof(target)) !== 'object') {
+    target = {};
+  }
+  if (Array.isArray(source)) {
+    return source.slice();
+  }
+  Object.keys(source).forEach(function (property) {
+    var sourceProperty = source[property];
+    if ((typeof sourceProperty === 'undefined' ? 'undefined' : _typeof(sourceProperty)) === 'object') {
+      target[property] = objectMerge(target[property], sourceProperty);
+    } else {
+      target[property] = sourceProperty;
+    }
+  });
+  return target;
+}
+
+function scrollTo(element, to, duration) {
+  if (duration <= 0) return;
+  var difference = to - element.scrollTop;
+  var perTick = difference / duration * 10;
+  setTimeout(function () {
+    console.log(new Date());
+    element.scrollTop = element.scrollTop + perTick;
+    if (element.scrollTop === to) return;
+    scrollTo(element, to, duration - 10);
+  }, 10);
+}
+
+function toggleClass(element, className) {
+  if (!element || !className) {
+    return;
+  }
+  var classString = element.className;
+  var nameIndex = classString.indexOf(className);
+  if (nameIndex === -1) {
+    classString += '' + className;
+  } else {
+    classString = classString.substr(0, nameIndex) + classString.substr(nameIndex + className.length);
+  }
+  element.className = classString;
+}
+
+var pickerOptions = exports.pickerOptions = [{
+  text: '今天',
+  onClick: function onClick(picker) {
+    var end = new Date();
+    var start = new Date(new Date().toDateString());
+    end.setTime(start.getTime());
+    picker.$emit('pick', [start, end]);
+  }
+}, {
+  text: '最近一周',
+  onClick: function onClick(picker) {
+    var end = new Date(new Date().toDateString());
+    var start = new Date();
+    start.setTime(end.getTime() - 3600 * 1000 * 24 * 7);
+    picker.$emit('pick', [start, end]);
+  }
+}, {
+  text: '最近一个月',
+  onClick: function onClick(picker) {
+    var end = new Date(new Date().toDateString());
+    var start = new Date();
+    start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+    picker.$emit('pick', [start, end]);
+  }
+}, {
+  text: '最近三个月',
+  onClick: function onClick(picker) {
+    var end = new Date(new Date().toDateString());
+    var start = new Date();
+    start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+    picker.$emit('pick', [start, end]);
+  }
+}];
+
+function getTime(type) {
+  if (type === 'start') {
+    return new Date().getTime() - 3600 * 1000 * 24 * 90;
+  } else {
+    return new Date(new Date().toDateString());
+  }
+}
+
+function debounce(func, wait, immediate) {
+  var timeout = void 0,
+      args = void 0,
+      context = void 0,
+      timestamp = void 0,
+      result = void 0;
+
+  var later = function later() {
+    // 据上一次触发时间间隔
+    var last = +new Date() - timestamp;
+
+    // 上次被包装函数被调用时间间隔last小于设定时间间隔wait
+    if (last < wait && last > 0) {
+      timeout = setTimeout(later, wait - last);
+    } else {
+      timeout = null;
+      // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+      if (!immediate) {
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      }
+    }
+  };
+
+  return function () {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    context = this;
+    timestamp = +new Date();
+    var callNow = immediate && !timeout;
+    // 如果延时不存在，重新设定延时
+    if (!timeout) timeout = setTimeout(later, wait);
+    if (callNow) {
+      result = func.apply(context, args);
+      context = args = null;
+    }
+
+    return result;
+  };
+}
+
+function deepClone(source) {
+  if (!source && (typeof source === 'undefined' ? 'undefined' : _typeof(source)) !== 'object') {
+    throw new Error('error arguments', 'shallowClone');
+  }
+  var targetObj = source.constructor === Array ? [] : {};
+  Object.keys(source).forEach(function (keys) {
+    if (source[keys] && _typeof(source[keys]) === 'object') {
+      targetObj[keys] = source[keys].constructor === Array ? [] : {};
+      targetObj[keys] = deepClone(source[keys]);
+    } else {
+      targetObj[keys] = source[keys];
+    }
+  });
+  return targetObj;
+}
+
+function title(title) {
+  title = title || 'T-SHOP';
+  window.document.title = title;
+}
+
+/***/ }),
+
 /***/ "./resources/assets/js/views/App.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -65661,7 +65984,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}],[\"env\"]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/views/App.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7cca96b8\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/views/App.vue")
 /* template functional */
@@ -65703,18 +66026,10 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/sass/app.scss":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./resources/assets/js/app.js");
-module.exports = __webpack_require__("./resources/assets/sass/app.scss");
+module.exports = __webpack_require__("./resources/assets/js/app.js");
 
 
 /***/ })

@@ -261,3 +261,8 @@ export function deepClone(source) {
   })
   return targetObj
 }
+
+export function title(title) {
+    title = title || 'T-SHOP';
+    window.document.title = title;
+}

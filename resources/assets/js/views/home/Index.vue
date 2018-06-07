@@ -4,6 +4,8 @@
         <el-dialog :visible.sync="visible" title="Hello world">
           <p>Try Element</p>
         </el-dialog>
+
+        <router-link to="/user">Go to Bar</router-link>
     </div>
 </template>
 

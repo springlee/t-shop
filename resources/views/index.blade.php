@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="X-CSRF-TOKEN" content="{{csrf_token()}}">
         <title>首页</title>
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
     <body>
         <div id="app"></div>
