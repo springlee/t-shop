@@ -10,16 +10,19 @@
     </div>
 </template>
 <script>
-export default {
-    data: function () {
-        return {
-
+    export default {
+        data: function () {
+            return {}
         }
     }
-}
 </script>
-<style>
-body {
-    margin: 0;
-}
+<style lang="scss">
+    body {
+        margin: 0;
+        .el-footer {
+            position: absolute;
+            bottom: 0;
+            width: 100% ;
+        }
+    }
 </style>

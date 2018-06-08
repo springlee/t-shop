@@ -6,7 +6,7 @@ const routers = [
         path: '/',
         name: 'home_index',
         meta: {
-            title: '首页-2'
+            title: '首页'
         },
         component: resolve => require(['../views/home/index'], resolve)
     },
