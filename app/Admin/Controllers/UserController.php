@@ -102,7 +102,10 @@ class UserController extends Controller
 
             $form->display('id', 'ID');
 
-            // $form->
+            $form->text('username', '用户名')->rules('required');;
+            $form->text('email', '邮箱')->rules('required|email');;
+            $form->mobile('tel', '手机号');
+            $form->password('password', '密码');
 
             $form->display('created_at', '创建时间');
             $form->display('updated_at', '最后更新时间');
